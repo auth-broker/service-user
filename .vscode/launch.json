@@ -59,7 +59,7 @@
       "request": "launch",
       "module": "uvicorn",
       "args": [
-        "obo_service.user.main:app",
+        "ab_service.user.main:app",
         "--host", "127.0.0.1",
         "--port", "8000",
         "--reload"

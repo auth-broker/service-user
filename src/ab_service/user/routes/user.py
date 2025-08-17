@@ -2,10 +2,10 @@ from typing import Annotated
 
 from fastapi import APIRouter
 from fastapi import Depends as FDepends
-from obo_core.database.session_context import db_session_async
-from obo_core.dependency import Depends
-from obo_core.user.model import User
-from obo_core.user.service import UserService
+from ab_core.database.session_context import db_session_async
+from ab_core.dependency import Depends
+from ab_core.user.model import User
+from ab_core.user.service import UserService
 from sqlalchemy.ext.asyncio.session import AsyncSession
 
 router = APIRouter(

@@ -4,7 +4,7 @@ import os
 
 from fastapi import FastAPI
 
-from obo_service.user.routes.user import router as user_router
+from ab_service.user.routes.user import router as user_router
 
 ROOT_LEVEL = os.environ.get("PROD", "INFO")
 
