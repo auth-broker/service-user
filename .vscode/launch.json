@@ -61,7 +61,7 @@
       "args": [
         "ab_service.user.main:app",
         "--host", "127.0.0.1",
-        "--port", "8000",
+        "--port", "8002",
         "--reload"
       ],
       "justMyCode": false,
