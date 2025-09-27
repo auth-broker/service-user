@@ -77,7 +77,6 @@ async def seen_user(
         raise HTTPException(status_code=404, detail="User not found")
 
     await user_service.seen_user(user=user, db_session=db_session)
-    await db_session.flush()
     return user
 
 
@@ -99,5 +98,4 @@ async def upsert_user_by_oidc(
         preferred_username=payload.preferred_username,
         db_session=db_session,
     )
-    await db_session.flush()
     return user

@@ -1,7 +1,13 @@
+"""Main application for the User Service."""
+
 import logging
 import logging.config
 import os
+from contextlib import asynccontextmanager
+from typing import Annotated
 
+from ab_core.database.databases import Database
+from ab_core.dependency import Depends, inject
 from fastapi import FastAPI
 
 from ab_service.user.routes.user import router as user_router
@@ -43,5 +49,17 @@ logging.config.dictConfig(LOGGING_CONFIG)
 
 logger = logging.getLogger(__name__)
 
-app = FastAPI()
+
+@inject
+@asynccontextmanager
+async def lifespan(
+    _app: FastAPI,
+    db: Annotated[Database, Depends(Database, persist=True)],
+):
+    """Lifespan context manager to handle startup and shutdown events."""
+    await db.async_upgrade_db()
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 app.include_router(user_router)
