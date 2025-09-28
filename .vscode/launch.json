@@ -52,7 +52,7 @@
       "justMyCode": false,
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}"
-    }
+    },
     {
       "name": "Run FastAPI (app:main)",
       "type": "debugpy",
