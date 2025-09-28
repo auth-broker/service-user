@@ -2,17 +2,15 @@
 
 import logging
 import logging.config
-import os
 from contextlib import asynccontextmanager
 from typing import Annotated
 
+from ab_core.alembic_auto_migrate.service import AlembicAutoMigrate
 from ab_core.database.databases import Database
 from ab_core.dependency import Depends, inject
 from fastapi import FastAPI
 
 from ab_service.user.routes.user import router as user_router
-
-ROOT_LEVEL = os.environ.get("PROD", "INFO")
 
 LOGGING_CONFIG = {
     "version": 1,
@@ -30,9 +28,13 @@ LOGGING_CONFIG = {
     },
     "loggers": {
         "": {  # root logger
-            "level": ROOT_LEVEL,  # "INFO",
+            "level": "INFO",
             "handlers": ["default"],
             "propagate": False,
+        },
+        "ab_core.alembic_auto_migrate.service": {  # root logger
+            "level": "DEBUG",
+            "handlers": ["default"],
         },
         "uvicorn.error": {
             "level": "DEBUG",
@@ -54,10 +56,11 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(
     _app: FastAPI,
-    db: Annotated[Database, Depends(Database, persist=True)],
+    _db: Annotated[Database, Depends(Database, persist=True)],  # cold start load db into cache
+    alembic_auto_migrate: Annotated[AlembicAutoMigrate, Depends(AlembicAutoMigrate, persist=True)],
 ):
     """Lifespan context manager to handle startup and shutdown events."""
-    await db.async_upgrade_db()
+    alembic_auto_migrate.run()
     yield
 
 
