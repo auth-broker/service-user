@@ -4,7 +4,7 @@ from typing import Annotated
 from uuid import UUID
 
 from ab_core.database.session_context import db_session_async
-from ab_core.dependency import Depends  # your custom DI
+from ab_core.dependency import Depends
 from ab_core.user.model import User
 from ab_core.user.service import UserService
 from fastapi import APIRouter, HTTPException
@@ -39,7 +39,7 @@ async def get_user_by_id(
 
 
 @router.get(
-    "/by-oidc",
+    "/oidc",
     response_model=User,
 )
 async def get_user_by_oidc(
@@ -81,7 +81,7 @@ async def seen_user(
 
 
 @router.put(
-    "/upsert-oidc",
+    "/oidc",
     response_model=User,
 )
 async def upsert_user_by_oidc(
