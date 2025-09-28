@@ -1,15 +1,45 @@
 services:
-  package:
+  service:
     build:
       context: .
-      secrets:
-        - github_token
+    env_file:
+      - .env
+    environment:
+      DATABASE_TYPE: SQL_ALCHEMY
+      DATABASE_SQL_ALCHEMY_URL: postgresql+asyncpg://user:password@auth-broker-postgres:5432/auth-broker
+    depends_on:
+      postgres:
+        condition: service_healthy
     volumes:
       - ./src:/package/src
       - ./tests:/package/tests
     ports:
-      - "8002:80"
+      - "8000:80"
+    networks:
+      - auth-broker
 
-secrets:
-  github_token:
-    environment: GITHUB_TOKEN
+  postgres:
+    image: postgres:16-alpine
+    container_name: auth-broker-postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: auth-broker
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d auth-broker -h 127.0.0.1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - auth-broker
+
+networks:
+  auth-broker:
+    external: true
+
+volumes:
+  pgdata:
