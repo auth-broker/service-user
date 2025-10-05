@@ -78,15 +78,15 @@ wheels = [
 
 [[package]]
 name = "ab-logging"
-version = "0.1.1"
+version = "0.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
     { name = "rich" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/43/2e/7a7c28ef97946e8df3d9bbb8072718f12f9f2329c76afdaf7243c4a5b838/ab_logging-0.1.1.tar.gz", hash = "sha256:9f46ae4eb7abaee4e5a00a97558eb429243ee55db9cc1472611075c13c2cc49b", size = 7196, upload-time = "2025-10-05T02:40:06.382Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9a/d8/b4a88949203d44ca317fd783dfea1d4542afd1fc7568d0c67db5477f7167/ab_logging-0.1.2.tar.gz", hash = "sha256:83b6a42fe83ae541ae0800963705d5cde10550d307c7c731526d5b05511a2530", size = 7180, upload-time = "2025-10-05T02:56:24.169Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/55/77/8cf095df93af17bde3a33ef58ec004e633824d9e939a3a6d48db90cb40f1/ab_logging-0.1.1-py3-none-any.whl", hash = "sha256:0109f1b09622e439dc2c5fd785d4ff0aa8a5c246a5dc57a67c7b8eb6efec2e94", size = 5677, upload-time = "2025-10-05T02:40:05.04Z" },
+    { url = "https://files.pythonhosted.org/packages/e2/29/2a1acf52fa162c270a3c15da38c007e8567e6002b97b2122955986b7b741/ab_logging-0.1.2-py3-none-any.whl", hash = "sha256:6cbd499109963e068a4b2f87bd0add680834126fc3ce0d5842bae5c4994b5f61", size = 5666, upload-time = "2025-10-05T02:56:22.731Z" },
 ]
 
 [[package]]
@@ -148,7 +148,7 @@ dev = [
 requires-dist = [
     { name = "ab-alembic-auto-migrate", specifier = ">=0.2.0,<1" },
     { name = "ab-database", extras = ["postgres-sync", "postgres-async"], specifier = ">=0.2.2,<1" },
-    { name = "ab-logging", specifier = ">=0.1.1" },
+    { name = "ab-logging", specifier = ">=0.1.2" },
     { name = "ab-user", specifier = ">=0.1.7,<1" },
     { name = "fastapi", specifier = ">=0.115.14,<0.116" },
     { name = "pydantic", extras = ["email"], specifier = ">=2.11.7,<3" },
