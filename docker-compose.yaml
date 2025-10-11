@@ -14,7 +14,7 @@ services:
       - ./src:/package/src
       - ./tests:/package/tests
     ports:
-      - "8000:80"
+      - "8002:80"
     networks:
       - auth-broker
 
