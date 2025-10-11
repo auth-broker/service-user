@@ -5,6 +5,8 @@ services:
     env_file:
       - .env
     environment:
+      LOGGING_CONFIG_LEVEL: "${LOGGING_CONFIG_LEVEL:-DEBUG}"
+      LOGGING_CONFIG_NAMESPACES: '${LOGGING_CONFIG_NAMESPACES:-["", "uvicorn"]}'
       DATABASE_TYPE: SQL_ALCHEMY
       DATABASE_SQL_ALCHEMY_URL: postgresql+asyncpg://user:password@auth-broker-postgres:5432/auth-broker
       ALEMBIC_AUTO_MIGRATE_DB_URL: postgresql+psycopg://user:password@auth-broker-postgres:5432/auth-broker
