@@ -11,11 +11,6 @@ class UpsertByOIDCRequest(BaseModel):
         title="OIDC Subject",
         description="The subject (unique user identifier) provided by the OIDC provider.",
     )
-    oidc_iss: str = Field(
-        ...,
-        title="OIDC Issuer",
-        description="The issuer URL or identifier of the OIDC provider.",
-    )
     email: EmailStr | None = Field(
         None,
         title="Email Address",

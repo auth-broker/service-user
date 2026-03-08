@@ -106,20 +106,20 @@ wheels = [
 
 [[package]]
 name = "ab-user"
-version = "0.1.9"
+version = "0.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ab-database" },
     { name = "ab-dependency" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b0/be/3f4412f687f5c20e2b41a7a6912df5f4eb834c2ed9439b33d2421d9fcb2b/ab_user-0.1.9.tar.gz", hash = "sha256:5df62be3409d1bc789b16a00917764947de11e6f114d487a173f1e68f278f584", size = 4567, upload-time = "2026-01-11T04:43:45.108Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a8/13/06a82e576b1b106938d387392d8b8675ea485f66050fe49cf0f0438acd17/ab_user-0.2.0.tar.gz", hash = "sha256:6083cde52551b0af4664971fb1912b9072e28d95d618db51dfb4a46b1c058efc", size = 4537, upload-time = "2026-03-08T08:22:00.996Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/7e/09/ebff435e35cc951165ee7ebdba71bec78c9026bb193ad6ce9f03693457a4/ab_user-0.1.9-py3-none-any.whl", hash = "sha256:31e55cbe30ce7bfedb650f093271743f79a88748af32dd12593f29a24c011212", size = 3351, upload-time = "2026-01-11T04:43:44.186Z" },
+    { url = "https://files.pythonhosted.org/packages/7f/1b/d865c2b2dc974169c957a50ea1e3e90e2841c57c70b51a7eabf5ced5316a/ab_user-0.2.0-py3-none-any.whl", hash = "sha256:c6a2586ecb06ad4a563d0acb7aec570acff50fd28aa46f598740f98531544fb6", size = 3317, upload-time = "2026-03-08T08:21:59.742Z" },
 ]
 
 [[package]]
 name = "ab-user-service"
-version = "0.3.0"
+version = "0.4.0"
 source = { editable = "." }
 dependencies = [
     { name = "ab-alembic-auto-migrate" },
@@ -149,7 +149,7 @@ requires-dist = [
     { name = "ab-alembic-auto-migrate", specifier = ">=0.2.0,<0.3.0" },
     { name = "ab-database", extras = ["postgres-sync", "postgres-async"], specifier = ">=0.2.2,<0.3.0" },
     { name = "ab-logging", specifier = ">=0.1.2,<0.2.0" },
-    { name = "ab-user", specifier = ">=0.1.7,<0.2.0" },
+    { name = "ab-user", specifier = ">=0.2.0,<0.3.0" },
     { name = "fastapi", specifier = ">=0.115.14,<0.116" },
     { name = "pydantic", extras = ["email"], specifier = ">=2.11.7,<3" },
     { name = "uvicorn", specifier = ">=0.35.0,<0.36" },

@@ -44,14 +44,12 @@ async def get_user_by_id(
 )
 async def get_user_by_oidc(
     oidc_sub: str,
-    oidc_iss: str,
     db_session: Annotated[AsyncSession, FDepends(db_session_async)],
     user_service: Annotated[UserService, Depends(UserService, persist=True)],
 ):
     """Get user by OIDC subject and issuer."""
     user = await user_service.get_user_by_oidc(
         oidc_sub=oidc_sub,
-        oidc_iss=oidc_iss,
         db_session=db_session,
     )
     if not user:
@@ -92,7 +90,6 @@ async def upsert_user_by_oidc(
     """Create or update a user based on OIDC info."""
     user = await user_service.upsert_user_by_oidc(
         oidc_sub=payload.oidc_sub,
-        oidc_iss=payload.oidc_iss,
         email=payload.email,
         display_name=payload.display_name,
         preferred_username=payload.preferred_username,
